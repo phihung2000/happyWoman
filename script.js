@@ -84,10 +84,9 @@ const ctx = canvas.getContext('2d');
 
 let fireworks = [];
 let isFireworksActive = false;
+let animationFrameId = null;
 
 function animateFireworks() {
-    if (!isFireworksActive) return;
-    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     fireworks.forEach((firework, index) => {
@@ -99,19 +98,27 @@ function animateFireworks() {
         }
     });
     
-    requestAnimationFrame(animateFireworks);
+    // Continue animation loop as long as there are fireworks or it's active
+    if (isFireworksActive || fireworks.length > 0) {
+        animationFrameId = requestAnimationFrame(animateFireworks);
+    } else {
+        animationFrameId = null;
+    }
 }
 
 function launchFireworks() {
     isFireworksActive = true;
+    
+    // Start animation loop if not already running
+    if (!animationFrameId) {
+        animateFireworks();
+    }
     
     const launchInterval = setInterval(() => {
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height * 0.5;
         fireworks.push(new Firework(canvas, x, y));
     }, 200);
-    
-    animateFireworks();
     
     setTimeout(() => {
         clearInterval(launchInterval);
@@ -183,6 +190,12 @@ createFloatingHearts();
 window.addEventListener('load', () => {
     setTimeout(() => {
         // Auto-launch some fireworks on load
+        isFireworksActive = true;
+        
+        if (!animationFrameId) {
+            animateFireworks();
+        }
+        
         for (let i = 0; i < 5; i++) {
             setTimeout(() => {
                 const x = Math.random() * canvas.width;
@@ -190,9 +203,6 @@ window.addEventListener('load', () => {
                 fireworks.push(new Firework(canvas, x, y));
             }, i * 500);
         }
-        
-        isFireworksActive = true;
-        animateFireworks();
         
         setTimeout(() => {
             isFireworksActive = false;
