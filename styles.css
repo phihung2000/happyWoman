@@ -6,19 +6,21 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
-    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .container {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    padding: 20px;
 }
 
 .hearts-background {
@@ -40,6 +42,7 @@ body {
     border-radius: 30px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     max-width: 600px;
+    width: 100%;
     animation: fadeInUp 1s ease-out;
 }
 
@@ -260,6 +263,48 @@ body {
     z-index: 3;
 }
 
+/* Side Flower Bouquets */
+.side-bouquet {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.left-bouquet {
+    left: 50px;
+}
+
+.right-bouquet {
+    right: 50px;
+}
+
+.bouquet-flower {
+    font-size: 60px;
+    animation: swayFlower 3s ease-in-out infinite;
+    animation-delay: var(--delay);
+    transform: rotate(var(--rotate));
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.bouquet-flower:hover {
+    transform: scale(1.2) rotate(var(--rotate));
+}
+
+@keyframes swayFlower {
+    0%, 100% {
+        transform: rotate(var(--rotate)) translateX(0);
+    }
+    50% {
+        transform: rotate(var(--rotate)) translateX(10px);
+    }
+}
+
 /* Floating hearts */
 .floating-heart {
     position: absolute;
@@ -282,33 +327,98 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+    
+    .container {
+        padding: 10px;
+        min-height: 100vh;
+    }
+    
     .content {
         padding: 30px 20px;
-        max-width: 90%;
+        max-width: 100%;
+        margin: 0 10px;
     }
     
     .title-line {
-        font-size: 1.8em;
+        font-size: 1.5em !important;
+        margin: 5px 0;
     }
     
     .highlight {
-        font-size: 2.2em;
+        font-size: 2em !important;
     }
     
     .message {
-        font-size: 1.2em;
-    }
-    
-    .quote {
-        font-size: 1em;
-    }
-    
-    .wishes {
         font-size: 1.1em;
     }
     
+    .quote {
+        font-size: 0.95em;
+        padding: 10px;
+    }
+    
+    .wishes {
+        font-size: 1em;
+    }
+    
     .flower {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .petal {
+        width: 40px;
+        height: 60px;
+    }
+    
+    .center {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .heart-button {
+        padding: 12px 30px;
+        font-size: 1.1em;
+    }
+    
+    /* Hide side bouquets on small screens, show them smaller */
+    .side-bouquet {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .left-bouquet {
+        left: 20px;
+    }
+    
+    .right-bouquet {
+        right: 20px;
+    }
+    
+    .bouquet-flower {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-line {
+        font-size: 1.3em !important;
+    }
+    
+    .highlight {
+        font-size: 1.8em !important;
+    }
+    
+    .content {
+        padding: 20px 15px;
+    }
+    
+    .message-box {
+        padding: 15px;
+        margin: 20px 0;
     }
 }
