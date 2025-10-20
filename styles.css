@@ -119,10 +119,10 @@ body {
     height: 150px;
     position: relative;
     margin: 0 auto;
-    animation: rotate 20s linear infinite;
+    animation: rotateFlower 10s linear infinite;
 }
 
-@keyframes rotate {
+@keyframes rotateFlower {
     from {
         transform: rotate(0deg);
     }
@@ -131,47 +131,85 @@ body {
     }
 }
 
+/* Cánh hoa sen */
 .petal {
     position: absolute;
-    width: 50px;
-    height: 80px;
-    background: linear-gradient(135deg, #ff006e, #ff4d94);
-    border-radius: 50% 50% 50% 0;
+    width: 60px;
+    height: 100px;
+    background: linear-gradient(to top, #ff1493, #ff69b4);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     top: 50%;
     left: 50%;
-    transform-origin: 0 100%;
-    opacity: 0.9;
-    animation: petalPulse 3s ease-in-out infinite;
+    transform-origin: 50% 100%;
+    box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
 }
 
-@keyframes petalPulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+.petal1 {
+    transform: translate(-50%, -100%) rotate(0deg);
 }
 
-.petal1 { transform: rotate(0deg) translateY(-40px); animation-delay: 0s; }
-.petal2 { transform: rotate(45deg) translateY(-40px); animation-delay: 0.2s; }
-.petal3 { transform: rotate(90deg) translateY(-40px); animation-delay: 0.4s; }
-.petal4 { transform: rotate(135deg) translateY(-40px); animation-delay: 0.6s; }
-.petal5 { transform: rotate(180deg) translateY(-40px); animation-delay: 0.8s; }
-.petal6 { transform: rotate(225deg) translateY(-40px); animation-delay: 1s; }
-.petal7 { transform: rotate(270deg) translateY(-40px); animation-delay: 1.2s; }
-.petal8 { transform: rotate(315deg) translateY(-40px); animation-delay: 1.4s; }
+.petal2 {
+    transform: translate(-50%, -100%) rotate(45deg);
+}
 
+.petal3 {
+    transform: translate(-50%, -100%) rotate(90deg);
+}
+
+.petal4 {
+    transform: translate(-50%, -100%) rotate(135deg);
+}
+
+.petal5 {
+    transform: translate(-50%, -100%) rotate(180deg);
+}
+
+.petal6 {
+    transform: translate(-50%, -100%) rotate(225deg);
+}
+
+.petal7 {
+    transform: translate(-50%, -100%) rotate(270deg);
+}
+
+.petal8 {
+    transform: translate(-50%, -100%) rotate(315deg);
+}
+
+/* Đài hoa sen ở giữa */
 .center {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background: radial-gradient(circle, #ffd700, #ffed4e);
     border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    z-index: 10;
+}
+
+/* Tạo hạt sen trong đài */
+.center::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ff8c00;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        -12px 0 0 #ff8c00,
+        12px 0 0 #ff8c00,
+        0 -12px 0 #ff8c00,
+        0 12px 0 #ff8c00,
+        -8px -8px 0 #ff8c00,
+        8px -8px 0 #ff8c00,
+        -8px 8px 0 #ff8c00,
+        8px 8px 0 #ff8c00;
 }
 
 /* Message Box */
@@ -365,18 +403,32 @@ body {
     }
     
     .flower {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
     
     .petal {
-        width: 40px;
-        height: 60px;
+        width: 48px;
+        height: 80px;
     }
     
     .center {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .center::before {
+        width: 6px;
+        height: 6px;
+        box-shadow: 
+            -10px 0 0 #ff8c00,
+            10px 0 0 #ff8c00,
+            0 -10px 0 #ff8c00,
+            0 10px 0 #ff8c00,
+            -7px -7px 0 #ff8c00,
+            7px -7px 0 #ff8c00,
+            -7px 7px 0 #ff8c00,
+            7px 7px 0 #ff8c00;
     }
     
     .heart-button {
