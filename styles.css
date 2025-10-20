@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hearts-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-title {
+    margin-bottom: 30px;
+}
+
+.title-line {
+    display: block;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+    animation: slideIn 0.8s ease-out backwards;
+}
+
+.title-line:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.title-line:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.title-line:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.highlight {
+    color: #ff006e;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(255, 0, 110, 0.3);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Flower Animation */
+.flower-container {
+    margin: 30px 0;
+    animation: fadeIn 1s ease-out 0.8s backwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.flower {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin: 0 auto;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.petal {
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff006e, #ff4d94);
+    border-radius: 50% 50% 50% 0;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 100%;
+    opacity: 0.9;
+    animation: petalPulse 3s ease-in-out infinite;
+}
+
+@keyframes petalPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.petal1 { transform: rotate(0deg) translateY(-40px); animation-delay: 0s; }
+.petal2 { transform: rotate(45deg) translateY(-40px); animation-delay: 0.2s; }
+.petal3 { transform: rotate(90deg) translateY(-40px); animation-delay: 0.4s; }
+.petal4 { transform: rotate(135deg) translateY(-40px); animation-delay: 0.6s; }
+.petal5 { transform: rotate(180deg) translateY(-40px); animation-delay: 0.8s; }
+.petal6 { transform: rotate(225deg) translateY(-40px); animation-delay: 1s; }
+.petal7 { transform: rotate(270deg) translateY(-40px); animation-delay: 1.2s; }
+.petal8 { transform: rotate(315deg) translateY(-40px); animation-delay: 1.4s; }
+
+.center {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #ffd700, #ffed4e);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+/* Message Box */
+.message-box {
+    margin: 30px 0;
+    padding: 20px;
+    animation: fadeIn 1s ease-out 1s backwards;
+}
+
+.message {
+    font-size: 1.5em;
+    color: #ff006e;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.quote {
+    font-size: 1.2em;
+    font-style: italic;
+    color: #555;
+    line-height: 1.8;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 0, 110, 0.05);
+    border-left: 4px solid #ff006e;
+    border-radius: 5px;
+}
+
+.wishes {
+    font-size: 1.3em;
+    color: #333;
+    margin-top: 20px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* Heart Button */
+.heart-button {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #ff006e, #ff4d94);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+    transition: all 0.3s ease;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.heart-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(255, 0, 110, 0.6);
+}
+
+.heart-button:active {
+    transform: scale(0.95);
+}
+
+/* Canvas for fireworks */
+#fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Floating hearts */
+.floating-heart {
+    position: absolute;
+    font-size: 30px;
+    animation: float 4s ease-in forwards;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+    
+    .title-line {
+        font-size: 1.8em;
+    }
+    
+    .highlight {
+        font-size: 2.2em;
+    }
+    
+    .message {
+        font-size: 1.2em;
+    }
+    
+    .quote {
+        font-size: 1em;
+    }
+    
+    .wishes {
+        font-size: 1.1em;
+    }
+    
+    .flower {
+        width: 120px;
+        height: 120px;
+    }
+}
