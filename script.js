@@ -161,14 +161,17 @@ heartButton.addEventListener('click', () => {
     
     // Change button text
     const messages = [
-        'Yêu em! 💖',
-        'Em là duy nhất! 🌟',
-        'Mãi yêu em! 💕',
-        'Em xinh đẹp nhất! 🌸',
-        'Anh yêu em nhiều lắm! ❤️'
+        'Yêu baby! 💖✨',
+        'Baby xinh quá đi! 😍',
+        'Anh nghiện baby rồi! 🔥',
+        'My Queen! ��💕',
+        'Baby của anh thôi! 💖',
+        'Yêu em vô cùng! ❤️🌟',
+        'Forever baby nha! 💕✨',
+        'Em là tất cả! 🌹💖'
     ];
     
-    heartButton.querySelector('span').textContent = messages[clickCount % messages.length];
+    heartButton.querySelector('.button-text').textContent = messages[clickCount % messages.length];
     
     // Animate button
     heartButton.style.transform = 'scale(0.8)';
